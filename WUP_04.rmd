@@ -52,7 +52,6 @@ The bachelor degree median is about 10, high school degree median is about 9, an
 ### Numerical Descriptive Results
 
 
-
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ## Inferential Results
