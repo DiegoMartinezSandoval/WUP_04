@@ -5,6 +5,7 @@ date: "6/8/22"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 ```{r include=FALSE,echo=FALSE}
@@ -35,11 +36,22 @@ We are explaining that there is a significant difference in average score on WOR
 
 ## Descriptive Results
 
+
+
 ### Graphical Descriptive Results
+
+```{r eval=FALSE, include=FALSE}
+boxplot(WORDSUM~DEGREE, data = GSScsv)
+```
+
+The median for the bachelor degree is a bit higher than the other two medians. 
+The bachelor degree median is about 10, high school degree median is about 9, and the LT high school median is about 8. The bachelor degree box plot doesn't have any outliers, highschool degree has 2 outliers below it's minimum, LT highschool degree has 1 outlier below the minimum & one above the max. So far based off of this box plot, the bachelor degree (categorical) has a higher median for the WORDSUM score (numerical) out of all 3 degrees. 
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Numerical Descriptive Results
+
+
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
