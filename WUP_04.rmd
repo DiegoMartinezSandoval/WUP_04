@@ -8,12 +8,14 @@ output:
   pdf_document: default
 ---
 
-```{r include=FALSE,echo=FALSE}
+```{r echo=FALSE, include=FALSE}
 require(knitr)
 require(tidyverse)
 require(tigerstats)
-
+require(mosaic)
 ```
+
+
 
 # Introduction
 
@@ -26,7 +28,12 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 
 # Methods
 
-We are explaining that there is a significant difference in average score on WORDSUM tests between at least two levels of degree. We will be examining a categorical variable cultivation. We will also use a T-test to compare the average score on the WORDSUM test between at least two levels of degree. The P-value will determine if whether or not we're correct: it has to be lower than .05 
+```{r}
+gssDataframe=read.csv("GSScsv.csv")
+```
+
+
+We are explaining that there is a significant difference in average score on WORDSUM tests between at least two levels of degree. We will be examining a categorical variable cultivation. We will also use a T-test to compare the average score on the WORDSUM test between at least two levels of degree. The P-value will determine if whether or not we're correct: it has to be lower than .05. The WORDSUM is numerical. Degree is categorical.
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
@@ -40,8 +47,8 @@ We are explaining that there is a significant difference in average score on WOR
 
 ### Graphical Descriptive Results
 
-```{r eval=FALSE, include=FALSE}
-boxplot(WORDSUM~DEGREE, data = GSScsv)
+```{r}
+boxplot(WORDSUM~DEGREE,data=gssDataframe)
 ```
 
 The median for the bachelor degree is a bit higher than the other two medians. 
@@ -51,8 +58,8 @@ The bachelor degree median is about 10, high school degree median is about 9, an
 
 ### Numerical Descriptive Results
 
-```{r eval=FALSE, include=FALSE}
-favstats(WORDSUM~DEGREE, data = GSScsv)
+```{r}
+favstats(WORDSUM~DEGREE,data=gssDataframe)
 ```
 
 The median for a bachelor degree is 10, 11 for a graduate, 9 for a high school degree, 10 for a junior college, and a 7 for LT high school. The max is the same for 4 out of the 5 degrees (11 for LT). The mean is slightly different for all of them. Overall, the graduate has a higher median and mean. While having an equal maximum. It's the standout and has the highest average out of all the degrees. LT high school appears to have the lowest median, maximum, and average. 
@@ -62,11 +69,12 @@ The median for a bachelor degree is 10, 11 for a graduate, 9 for a high school d
 
 ## Inferential Results
 
-```{r eval=FALSE, include=FALSE}
-model1 <- aov(WORDSUM~DEGREE, data = GSScsv)
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=gssDataframe)
 summary.aov(model1)
 ```
-We can infer that the P-value is .000236. From the T table, we can reject the null hypothesis due to how small the p-value is. If the p-value is not .05 or higher, we can reject it due to how small the chances are. In every problem, we know we're accurate when we can reject the null hypothesis. There is a difference between degrees and how they score (on average) in the WORDSUM. The graduates clearly pull off a greater average than any of the 5 degrees provided with data. 
+
+We can infer that the P-value is .000236. From the AOV, we can reject the null hypothesis due to how small the p-value is. If the p-value is not .05 or higher, we can reject it due to how small the chances are. In every problem, we know we're accurate when we can reject the null hypothesis. There is a difference between degrees and how they score (on average) in the WORDSUM. The graduates clearly pull off a greater average than any of the 5 degrees provided with data. 
 
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
@@ -74,6 +82,6 @@ We can infer that the P-value is .000236. From the T table, we can reject the nu
 
 # Discussion and Conclusion
 
-The degree that the person has makes a difference between their average WORDSUM score. The graduate has a higher median and mean. While, having an equal maximum. We rejected the null hypothesis after seeing the T-test results. There is a clear difference. Graduates get the highest average and LT high school gets the lowest average. In a way, it's based off of common sense. A graduate with more experience is expected to perform better.
+The degree that the person has makes a difference between their average WORDSUM score. The graduate has a higher median and mean. While, having an equal maximum. We rejected the null hypothesis after seeing the AOV results. There is a clear difference. Graduates get the highest average and LT high school gets the lowest average. In a way, it's based off of common sense. A graduate with more experience is expected to perform better.
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
